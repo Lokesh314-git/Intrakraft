@@ -1,6 +1,6 @@
 import { Catalogue, Product, SizeRatioConfig, CartItem, Review, UserProfile } from '../types';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://intrakraft-backend.vercel.app/api';
 
 /**
  * Returns authorization headers if token is present
