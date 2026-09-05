@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useAppStore } from './store/useAppStore';
 import { initFirebaseAuthListener } from './services/firebase';
 import { api } from './services/api';
@@ -110,7 +110,7 @@ export const App: React.FC = () => {
   }, [setUser]);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         {/* Public & Auth Routes */}
         <Route path="/login" element={<Login />} />
@@ -179,7 +179,7 @@ export const App: React.FC = () => {
         {/* Catch-all 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
