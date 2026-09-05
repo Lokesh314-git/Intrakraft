@@ -9,6 +9,7 @@ The system features a **strictly decoupled Frontend & Backend architecture**, bu
 > - **Live Backend API (Vercel)**: [https://intrakraft-backend.vercel.app](https://intrakraft-backend.vercel.app)
 > - **Interactive Swagger Docs**: [https://intrakraft-backend.vercel.app/api/docs](https://intrakraft-backend.vercel.app/api/docs)
 > - **System Health Check**: [https://intrakraft-backend.vercel.app/api/health](https://intrakraft-backend.vercel.app/api/health)
+> - **Setup & Run Instructions (PDF)**: [Intrakraft_Setup_and_Run_Instructions.pdf](./Intrakraft_Setup_and_Run_Instructions.pdf)
 > - **Frontend GitHub Repository**: [https://github.com/Lokesh314-git/Intrakraft](https://github.com/Lokesh314-git/Intrakraft)
 > - **Backend GitHub Repository**: [https://github.com/Lokesh314-git/Intrakraft-backend](https://github.com/Lokesh314-git/Intrakraft-backend)
 
