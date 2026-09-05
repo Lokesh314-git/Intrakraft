@@ -7,33 +7,11 @@ The system features a **strictly decoupled Frontend & Backend architecture**, bu
 > **Live Deployment Links:**
 > - **Live Frontend (GitHub Pages)**: [https://lokesh314-git.github.io/Intrakraft/](https://lokesh314-git.github.io/Intrakraft/)
 > - **Live Backend API (Vercel)**: [https://intrakraft-backend.vercel.app](https://intrakraft-backend.vercel.app)
-> - **Interactive Swagger Docs**: [https://intrakraft-backend.vercel.app/api/docs](https://intrakraft-backend.vercel.app/api/docs)
-> - **System Health Check**: [https://intrakraft-backend.vercel.app/api/health](https://intrakraft-backend.vercel.app/api/health)
-> - **Setup & Run Instructions (PDF)**: [Intrakraft_Setup_and_Run_Instructions.pdf](./Intrakraft_Setup_and_Run_Instructions.pdf)
-> - **Frontend GitHub Repository**: [https://github.com/Lokesh314-git/Intrakraft](https://github.com/Lokesh314-git/Intrakraft)
 > - **Backend GitHub Repository**: [https://github.com/Lokesh314-git/Intrakraft-backend](https://github.com/Lokesh314-git/Intrakraft-backend)
 
 ---
 
-## 📋 Evaluation Checklist & 100% Assignment Compliance
-
-| # | Core Assignment Requirement | Implementation Status | Implementation Details |
-|---|---|---|---|
-| **1** | **Upload Catalogue Excel (.xlsx) file** | ✅ **Complete** | Handled by backend `POST /api/catalogues/upload` using SheetJS (`xlsx`). Supports `.xlsx`, `.xls`, and `.csv` with drag-and-drop. |
-| **2** | **Read and display catalogue products from uploaded file** | ✅ **Complete** | Ingested products are extracted, validated, and displayed across `/admin/products`, `/admin/catalogues/:id`, and `/admin/user-view/catalogue`. |
-| **3** | **Use uploaded catalogue as source of Products, Grades, Sizes, and Attributes** | ✅ **Complete** | All data (Product Name, Grade, Brick, Category, Neck, Sleeve, Price, Sizes) is dynamically parsed from the uploaded spreadsheet. |
-| **4** | **Allow product selection and Add to Cart** | ✅ **Complete** | Interactive size and quantity selectors on Product Cards, Quick View modal, and Product Detail Pages. |
-| **5** | **Cart must contain products with different Grades (A, B, C)** | ✅ **Complete** | Cart strictly organizes line items into dedicated sections: **Grade A**, **Grade B**, **Grade C**, and **Grade D**. |
-| **6** | **Display product Grade and available Sizes in Cart** | ✅ **Complete** | Each cart item displays its Grade badge, category, and an itemized size-to-quantity breakdown (e.g. `S: 2, M: 4, L: 1`). |
-| **7** | **Allow separate size-wise ratio configuration for each Grade** | ✅ **Complete** | Independent ratio input matrices for Grade A, Grade B, Grade C, and Grade D. |
-| **8** | **Support ratio configuration at Brick, Category, Brick+Neck, Brick+Sleeve, and other attribute combination levels** | ✅ **Complete** | Fully supported attribute grouping levels: `Brick`, `Category`, `Brick + Category`, `Brick + Neck`, `Brick + Sleeve`, and dynamic `Custom Combination` toggles. |
-| **9** | **Support dynamic sizes from catalogue data (not hardcoded S, M, L)** | ✅ **Complete** | Dynamically detects whatever sizes exist in the uploaded file (e.g. children's `4-5Y`, `5-6Y`, `7-8Y` or adult `XS`, `S`, `M`, `L`, `XL`, `XXL`). |
-| **10** | **Allow Save/Set Ratio functionality** | ✅ **Complete** | Saves configured ratio models to database (`POST /api/ratios`) and client storage; generates normalized ratio string and proportional metrics. |
-| **11** | **Ensure Grade-wise ratio calculation works correctly for Grade A, B, and C** | ✅ **Complete** | Evaluated via pure backend `RatioEngine` using the **Hamilton Largest Remainder Method** for exact unit allocations and percentage distributions. |
-
----
-
-## 🏗️ Production-Grade Architecture
+## 🏗️ Architecture
 
 The project is structured with a **clean separation of concerns**:
 
@@ -73,9 +51,7 @@ Intrakraft-assignment/
 
 ### Key Architectural Strengths:
 1. **Layered Pattern**: `Routes → Controllers → Services → Repositories → StorageAdapter`.
-2. **Zero Business Logic in Views**: UI components only dispatch actions; mathematical ratio calculations and Excel transformations are executed on the server.
-3. **Local Storage Engine**: 100% self-contained local storage for files and assets, avoiding external dependencies.
-4. **Lifecycle Coupling & Cascade Deletion**: Products strictly require an active catalogue. Deleting a catalogue automatically cascade-deletes all associated products from the database and UI.
+2. **Local Storage Engine**: 100% self-contained local storage for files and assets, avoiding external dependencies.
 
 ---
 
@@ -175,36 +151,3 @@ When ordering a total production quantity $Q$ (e.g., $Q = 100$ or $500$ units), 
    The $\Delta$ leftover units are assigned one-by-one to the sizes with the largest fractional remainders $r_i$ in descending order.
 
 ---
-
-## 🧪 Verification & Quality Assurance
-
-Both frontend and backend pass all build, lint, and typecheck verifications with **zero errors**:
-
-```bash
-# Frontend Compilation
-npm run build
-# Output: ✓ built in 17s (0 errors)
-
-# Backend Compilation
-cd backend && npm run build
-# Output: tsc (0 errors)
-
-# Code Quality / Linting
-npm run lint
-# Output: 0 errors
-```
-
-### Automated Cascade & Ratio Math Test
-An automated verification test validates:
-1. Ingesting an Excel file without image URLs assigns empty string `""` (no hardcoded sample image).
-2. Querying `/api/ratios/calculate` with `{ S: 1, M: 2, L: 1 }` produces:
-   - `totalRatioSum: 4`
-   - `normalizedRatio: "1 : 2 : 1"`
-   - `percentageDistribution: { S: 25.0%, M: 50.0%, L: 25.0% }`
-3. Deleting a catalogue removes all linked products from the database and UI in sub-millisecond execution.
-
----
-
-## 📄 License & Attribution
-
-Submitted for the **Intrakraft Merchandising Engineering Selection Process**. All rights reserved.
