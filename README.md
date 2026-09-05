@@ -5,11 +5,12 @@ A production-grade, enterprise apparel merchandising platform engineered for **I
 The system features a **strictly decoupled Frontend & Backend architecture**, built with **Express, TypeScript, SheetJS, Firebase Admin SDK**, and a **React (TypeScript, Tailwind, Zustand)** frontend.
 
 > **Live Deployment Links:**
+> - **Live Frontend (GitHub Pages)**: [https://lokesh314-git.github.io/Intrakraft/](https://lokesh314-git.github.io/Intrakraft/)
 > - **Live Backend API (Vercel)**: [https://intrakraft-backend.vercel.app](https://intrakraft-backend.vercel.app)
 > - **Interactive Swagger Docs**: [https://intrakraft-backend.vercel.app/api/docs](https://intrakraft-backend.vercel.app/api/docs)
 > - **System Health Check**: [https://intrakraft-backend.vercel.app/api/health](https://intrakraft-backend.vercel.app/api/health)
-> - **Backend GitHub Repository**: [https://github.com/Lokesh314-git/Intrakraft-backend](https://github.com/Lokesh314-git/Intrakraft-backend)
 > - **Frontend GitHub Repository**: [https://github.com/Lokesh314-git/Intrakraft](https://github.com/Lokesh314-git/Intrakraft)
+> - **Backend GitHub Repository**: [https://github.com/Lokesh314-git/Intrakraft-backend](https://github.com/Lokesh314-git/Intrakraft-backend)
 
 ---
 
